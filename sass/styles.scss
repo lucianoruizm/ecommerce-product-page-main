@@ -4,6 +4,9 @@
 @use 'navbar';
 @use 'modal-navbar';
 @use 'gallery';
+@use 'details';
+@use 'input';
+@use 'modal-cart';
 
 .main-container{
     width: 375px;
@@ -12,5 +15,12 @@
     position: relative;
     @media (min-width: 1115px){
         width: 1115px;
+    }
+}
+.content{
+    @media (min-width: 1115px){
+        display: flex;
+        padding: 90px 50px;
+        gap: 124px;
     }
 }
