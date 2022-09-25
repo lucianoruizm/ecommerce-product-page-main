@@ -18,6 +18,7 @@
         justify-content: space-between;
         @media (min-width: 1115px){
             width: 500px;
+            align-items: baseline;
         }
     }
     &__menu{

@@ -1,15 +1,13 @@
 @use 'variables' as v;
 @use 'mixins';
 
-// .modal-gallery__background{
-//     border: 1px solid red;
-//     @include mixins.modal-background;
-// }
+.modal-gallery__background{
+    @include mixins.modal-background;
+}
 
 .modal-gallery{
     width: 550px;
     &__background{
-        @include mixins.modal-background;
         display: none;
         // display: grid; Se agrega cuando se haga click para mostrar modal
         place-content: center;

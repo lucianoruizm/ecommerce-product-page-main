@@ -9,7 +9,6 @@ let userInputNumber = 0;
 plusBtn.addEventListener('click', ()=>{
     userInputNumber++;
     userInput.value = userInputNumber;
-    console.log(userInputNumber);
 });
 
 minusBtn.addEventListener('click', ()=>{
@@ -18,16 +17,15 @@ minusBtn.addEventListener('click', ()=>{
         userInputNumber = 0;
     }
     userInput.value = userInputNumber;
-    console.log(userInputNumber);
 });
 
 // Add total products to the cart when clicks on ADD TO CART
 const addToCartBtn = document.querySelector('.details__button');
 let cartNotification = document.querySelector('.header__cart--notification');
-let lastValue = parseInt(cartNotification.innerText);
+let lastValue = 0;
 
 addToCartBtn.addEventListener('click', () => {
-    lastValue = lastValue + userInputNumber; //ERROR
+    lastValue = lastValue + userInputNumber;
 
     cartNotification.innerText = lastValue;
     cartNotification.style.display = 'block';
@@ -51,7 +49,8 @@ cartIconBtn.addEventListener('click', () => {
 
 });
 
-// Slide images
+
+// Slide images from the gallery
 const imageContainer = document.querySelector('.gallery__image-container');
 const previousGalleryBtn = document.querySelector('.gallery__previous');
 const nextGalleryBtn = document.querySelector('.gallery__next');
@@ -67,13 +66,34 @@ previousGalleryBtn.addEventListener('click', ()=> {
 
 // Display images modal
 const imagesModal = document.querySelector('.modal-gallery__background');
+const closeModalBtn = document.querySelector('.modal-gallery__close');
+
 imageContainer.addEventListener('click', ()=>{
     imagesModal.style.display = 'grid';
 })
 
+closeModalBtn.addEventListener('click', ()=>{
+    imagesModal.style.display = 'none';
+})
+
+
+// Change main images from thumbnails
+let thumbnails = document.querySelectorAll('.gallery__thumbnail');
+thumbnails = [...thumbnails]
+
+thumbnails.forEach(thumbnail => {
+    thumbnail.addEventListener('click', event=>{
+        imageContainer.style.backgroundImage = `url('../images/image-product-${event.target.id}.jpg')`
+    })
+})
+
+// Change main images from thumbnails in the modal
+
+
+
 // Functions
 
-//Remove content cart
+//Remove product from the cart
 function deleteProduct(){
     const deleteProductBtn = document.querySelector('.cart-modal__delete');
 
@@ -84,6 +104,7 @@ function deleteProduct(){
 })
 }
 
+//Draw content in modal
 function drawProductInModal(){
     productContainer.innerHTML =  `
         <div class="cart-modal__checkout-container">
@@ -102,6 +123,7 @@ function drawProductInModal(){
     priceModal.innerHTML = `$125 x${lastValue} <span>$${lastValue*125}.00</span>`
 }
 
+//Gallery
 function changeNextImg(imgContainer){
     if(imgIndex == 4){
         imgIndex = 1;

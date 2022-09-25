@@ -35,6 +35,9 @@
         color: v.$Black;
         font-weight: 700;
     }
+    &__delete{
+        cursor: pointer;
+    }
     &__checkout{
         @include mixins.button;
     }
