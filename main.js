@@ -76,7 +76,6 @@ closeModalBtn.addEventListener('click', ()=>{
     imagesModal.style.display = 'none';
 })
 
-
 // Change main images from thumbnails
 let thumbnails = document.querySelectorAll('.gallery__thumbnail');
 thumbnails = [...thumbnails]
@@ -87,8 +86,30 @@ thumbnails.forEach(thumbnail => {
     })
 })
 
-// Change main images from thumbnails in the modal
+// Change modal main images from thumbnails
+let modalthumbnails = document.querySelectorAll('.modal-gallery__thumbnails');
+const modalImageContainer = document.querySelector('.modal-gallery__image-container');
+modalthumbnails = [...modalthumbnails]
 
+modalthumbnails.forEach(modalthumbnail => {
+    modalthumbnail.addEventListener('click', event=>{
+        modalImageContainer.style.backgroundImage = `url('../images/image-product-${event.target.id.slice(-1)}.jpg')`
+    });
+});
+
+// Slide images from the modal gallery
+const previousModalBtn = document.querySelector('.modal-gallery__previous');
+const nextModalBtn = document.querySelector('.modal-gallery__next');
+
+nextModalBtn.addEventListener('click', ()=>{
+    changeNextImg(modalImageContainer)
+});
+
+previousModalBtn.addEventListener('click', ()=>{
+    changePreviousImg(modalImageContainer)
+});
+
+// Display hamburger menu
 
 
 // Functions
