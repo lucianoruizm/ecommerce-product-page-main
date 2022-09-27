@@ -35,7 +35,6 @@ addToCartBtn.addEventListener('click', () => {
 //Display details cart modal
 const cartIconBtn = document.querySelector('.header__cart');
 const cartModal = document.querySelector('.cart-modal');
-// let priceModal = document.querySelector('.cart-modal__price');
 const productContainer = document.querySelector('.cart-modal__checkout-container');
 
 cartIconBtn.addEventListener('click', () => {
@@ -110,6 +109,18 @@ previousModalBtn.addEventListener('click', ()=>{
 });
 
 // Display hamburger menu
+const hamburgerMenuBtn = document.querySelector('.header__menu');
+const modalMobileMenu = document.querySelector('.modal-navbar__background');
+
+hamburgerMenuBtn.addEventListener('click', ()=>{
+    modalMobileMenu.style.display = 'block';
+});
+
+const closeHamburgerBtn = document.querySelector('.modal-navbar__close-icon');
+
+closeHamburgerBtn.addEventListener('click', ()=>{
+    modalMobileMenu.style.display = 'none';
+});
 
 
 // Functions
@@ -128,7 +139,6 @@ function deleteProduct(){
 //Draw content in modal
 function drawProductInModal(){
     productContainer.innerHTML =  `
-        <div class="cart-modal__checkout-container">
             <div class="cart-modal__details-container">
               <img class="cart-modal__image" src="./images/image-product-1-thumbnail.jpg" alt="thumbnail">
               <div>
@@ -137,8 +147,7 @@ function drawProductInModal(){
               </div>
               <img class="cart-modal__delete" src="./images/icon-delete.svg" alt="delete">
             </div>
-            <button class="cart-modal__checkout">Checkout</button>
-          </div>`
+            <button class="cart-modal__checkout">Checkout</button>`
     deleteProduct()
     let priceModal = document.querySelector('.cart-modal__price');
     priceModal.innerHTML = `$125 x${lastValue} <span>$${lastValue*125}.00</span>`
